@@ -5,7 +5,7 @@
 2. Maven installed (optional) - [Click here](https://maven.apache.org/download.cgi)
 3. Git installed - [Click here](https://git-scm.com/downloads)
 4. Java Web Tomcat 8 installed and Server Runtime configured - [Click here](https://tools.hana.ondemand.com/)
-  * Remember to install the additiona Software from Help -> Install new Software... -> SAP Cloud Platform Tools
+  * Remember to install the additional Software from Help -> Install new Software... -> SAP Cloud Platform Tools
 5. Have a SAP Cloud Platform Trial Account - [Click here](https://cloudplatform.sap.com/index.html)
 
 ## Steps - 1. Running application locally
