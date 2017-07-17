@@ -1,0 +1,4 @@
+com/sap/task/tracker/dao/TaskDAO.class
+com/sap/task/tracker/controller/TaskController.class
+com/sap/task/tracker/application/PersistenceJPAConfig.class
+com/sap/task/tracker/model/Task.class
