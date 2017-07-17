@@ -1,70 +1,38 @@
-# BACK-END DEVELOPMENT
+# SAP Cloud Platform Training - Backend Code
 
--	Click in File > New > Dynamic Web Project > Fill the project name field > Add a runtime by selecting the Java web SDK from SAP Hana Cloud Platforms tools > Next > Next > Check the “Generate web.xml” box
--	Right click on the project > Configure > Convert to Maven Project
+## Prerequisites
+1. Eclipse Neon or Oxygen installed - [Click here](https://www.eclipse.org/downloads/?)
+2. Maven installed (optional) - [Click here](https://maven.apache.org/download.cgi)
+3. Git installed - [Click here](https://git-scm.com/downloads)
+4. Java Web Tomcat 8 installed and Server Runtime configured - [Click here](https://tools.hana.ondemand.com/)
+  * Remember to install the additiona Software from Help -> Install new Software... -> SAP Cloud Platform Tools
+5. Have a SAP Cloud Platform Trial Account - [Click here](https://cloudplatform.sap.com/index.html)
 
-# Configuring maven
--	Open the Pom.xml and configure the properties, repositories and dependencies
+## Steps - 1. Running application locally
+1. Clone this Repository in your machine
+2. Open Eclipse and import this project (Import -> Existing Project into Workspace)
+3. Right click on your imported project and select Maven -> Update Project (Or run it from the command line if installed)
+4. Right click on your imported project and select Run As -> Run on Server
+5. Select the SAP -> Java Web Tomcat 8, click Finish. This should setup and start your server
+5. Access the application at [http://localhost:8080/scptraining-be/](http://localhost:8080/scptraining-be/). Don't mind the 404.
+6. If you access this path [http://localhost:8080/scptraining-be/api/task](http://localhost:8080/scptraining-be/api/task) you should see an empty array, like: []
+ 
+## Steps - 2. Deploy to the cloud
+1. On your Eclipse, right click on your project and select Export -> War File, save it to your Desktop (Or get it from the Maven Build)
+2. Access [your SCP cockpit](https://account.hanatrial.ondemand.com/cockpit)
+3. Navigate to Applications -> Java Applications
+4. Click on the Deploy Application button and select the following:
+- War File Location: Select the file you exported on Step 1
+- Application name: scptrainingbe
+- Runtime Name: Java Web Tomcat 8
+- Leave other fields with their default values
+5. Click on the Deploy button and wait for the upload
+6. Once Deployment is done, Start the application
+7. Once the application is Started, click on its name on the Java Applications view
+8. On the application view, click on its link in order to launch a new browser tab. Again, don't mind the 404, yet ;)
+9. Append `/api/task` in the end of the URL. You should see an empty array, like: []
 
-# Creating the packages
--	com.sap.task.tracker.application
--	com.sap.task.tracker.controller
--	com.sap.task.tracker.dao
--	com.sap.task.tracker.model
+If you reached this point without any error, you are good, your API Server is up and running!
 
-# Configuring the Spring framework
--	Open the WebContent/WEB-INF/
--	Create a new file called mvc-dispatcher-servlet.xml
--	Don’t forget to map the packages: application, controller and dao
-
-# Configuring the web.xml
--	Open the WebContent/WEB-INF/web.xml
--	Configure the Spring
--	Configure the Datasource
-
-# Configuring the persistence layer
--	Create a class called PersistenceJPAConfig.java in the com.sap.task.tracker.application package
--	Map the package containing the JPA models
-
-# Creating the model
--	Create a new class called Task in the model package
--	Create three attributes:
-  o	id (long)
-  o	name (String)
-  o	done (Boolean)
--	Create getters/setter methods
--	Add the annotation @Entity above the class definition
--	Add the annotation @id
--	Add the annotation @column(nullable = false) for the name and done attributes
-
-# Creating the DAO
--	Create a new class called TaskDAO in the dao package
--	Add the annotation @Repository above the class definition
--	Create the EntityManager attribute and annotate with @PersistenceContext
--	Create the method to get all the Tasks from the database
--	Create the method to get a task by the id
--	Create the method to persist a new Task
--	Create the method to delete a Task
--	Create the method to update the Task done attribute
-
-
-# Creating the controller
--	Create a new class called TaskController in the controller package
--	Annotate the class with @Controller and @RequestMapping(“/task”)
--	Declare the TaskDao instance and annotate with @Autowired
--	Create the webservices which will call the methods from the DAO
-
-# Testing locally
--	Create a new Java Web Server
--	Select the SDK if needed
--	Add the project to the server
--	Publish and Start the server
-
-# Deploying to the HCP
--	Create a new SAP Hana Cloud Platform server
--	Change the Landscape host to “hanatrial.ondemand.com”
--	In runtime select the Java Web
--	Fill the fields with your data
--	Add the project to the server
--	Publish
--	Open the HCP cockpit and start the application
+## Steps - 3. UI Deployment
+1. Go to: [https://github.com/frankrafael/scptraining-ui](https://github.com/frankrafael/scptraining-ui) and continue from there.
